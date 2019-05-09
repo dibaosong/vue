@@ -27,7 +27,14 @@ const config = {
 		rules: [
 			{
 				test: /\.vue$/,
-				loader: 'vue-loader'
+				loader: 'vue-loader',
+				options: {
+					postcss: [
+	                  require('autoprefixer')(),
+	                  require('postcss-cssnext')(),
+	                  require('cssnano')()
+	                ]
+				}
 			},
 			{
 				test: /\.(gif|jpg|jpeg|png|svg)$/,
@@ -81,7 +88,18 @@ if(isDev){
 			test: /\.css$/,
 			use: [
 				'style-loader',
-				'css-loader'
+				'css-loader',
+				{
+	              loader: 'postcss-loader',
+	              options: {
+	                ident: 'postcss',
+	                plugins: [
+	                  require('autoprefixer')(),
+	                  require('postcss-cssnext')(),
+	                  require('cssnano')()
+	                ]
+	              }
+	            }
 			]
 		},
 		{
@@ -89,6 +107,17 @@ if(isDev){
 			use: [
 				'style-loader',
 				'css-loader',
+				{
+	              loader: 'postcss-loader',
+	              options: {
+	                ident: 'postcss',
+	                plugins: [
+	                  require('autoprefixer')(),
+	                  require('postcss-cssnext')(),
+	                  require('cssnano')()
+	                ]
+	              }
+	            },
 				'sass-loader'
 			]
 		}
@@ -132,7 +161,18 @@ if(isDev){
 			test: /\.css$/,
 			use: [
 				MiniCssExtractPlugin.loader,
-        　　	"css-loader"
+        　　	"css-loader",
+				{
+	              loader: 'postcss-loader',
+	              options: {
+	                ident: 'postcss',
+	                plugins: [
+	                  require('autoprefixer')(),
+	                  require('postcss-cssnext')(),
+	                  require('cssnano')()
+	                ]
+	              }
+	            }
 			]
 		},
 		{
@@ -140,6 +180,17 @@ if(isDev){
 			use: [
 				MiniCssExtractPlugin.loader,
         　　	"css-loader",
+				{
+	              loader: 'postcss-loader',
+	              options: {
+	                ident: 'postcss',
+	                plugins: [
+	                  require('autoprefixer')(),
+	                  require('postcss-cssnext')(),
+	                  require('cssnano')()
+	                ]
+	              }
+	            },
 	 			"sass-loader"
 			]
 		}
